@@ -1,0 +1,13 @@
+{
+    "title": "",
+    "fileName": "",
+    "revision": 1,
+    "nonMinifyFiles": [],
+    "deploy": {
+        "root": "./target",
+        "path": "./target/project",
+        "zips": "./target/zips"
+    },
+    "source": "",
+    "initialized": false
+}
