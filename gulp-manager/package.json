@@ -12,9 +12,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-json-format": "^2.0.0",
     "gulp-zip": "^4.2.0",
-    "run-sequence": "^2.2.1"
-  },
-  "devDependencies": {
+    "run-sequence": "^2.2.1",
     "gulp-template": "^5.0.0",
     "prompt": "^1.0.0"
   },
