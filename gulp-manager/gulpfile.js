@@ -9,6 +9,7 @@ const gulpJSONPrettyfier    = require('gulp-json-format');
 const gulpZip               = require('gulp-zip');
 const gulpRunSequence       = require('run-sequence');
 const gulpTemplate          = require('gulp-template');
+const gulpImageMin          = require('gulp-imagemin');
 
 // Other plugins/packages.
 const del                   = require('del');
@@ -44,11 +45,21 @@ gulp.task("minify-js", function(callback) {
 });
 
 /**
+ * Minifier for images.
+ */
+gulp.task("minify-img", function(callback) {
+    gulp.src("./src/**/*.{png,jpeg,gif,svg}")
+        .pipe(gulpImageMin())
+        .pipe(gulp.dest(deploy.path))
+        .on("end", callback);
+});
+
+/**
  * Minifier task.
  * 
  * Minifies the css and js files and places them to the destination folder.
  */
-gulp.task("minify", ["minify-css", "minify-js"], function(callback) {
+gulp.task("minify", ["minify-css", "minify-js", "minify-img"], function(callback) {
     callback();
 });
 
@@ -88,7 +99,7 @@ gulp.task("validate", function(callback) {
  * that have not been processed by other tasks.
  */
 gulp.task("pack", ["minify", "prettify"], function(callback) {
-    gulp.src("./src/**/!(*.js|*.css|*.html)")
+    gulp.src("./src/**/!(*.js|*.css|*.html|*.png|*.jpeg|*.gif|*.svg)")
         .pipe(gulp.dest(deploy.path))
         .on("end", callback);
 })
